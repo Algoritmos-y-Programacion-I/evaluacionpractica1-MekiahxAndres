@@ -98,34 +98,80 @@ public class Guacamaya {
         unidades = new int[referencias];
 
     }
-
+    /**
+     * Descripcion: Permite guardar cantidades y precios en los arreglos
+     * pre: El arreglo unidades debe estar inicializado
+     * pre: El arreglo precios debe estar inicializado
+     * pos: El arreglo unidades queda modificado con nuevo valor
+     * pos: El arreglo precios queda modificado con nuevo valor
+     */
     public static void solicitarDatos(){
-
+        for (int i = 0; i < unidades.length; i++) {
+            System.out.print("Cual es la Cantidad del producto " + (i+1) + ": ");
+            unidades[i] = reader.nextInt();
+            System.out.print("Cual es el precio de ese producto: ");
+            precios[i] = reader.nextDouble();
+        }
      
     }
-
+    /**
+     * Descripcion: Permite calcular el total de unidades que fueron vendidas
+     * pre: El arreglo unidades debe estar inicializado
+     * @return unidatot Cantidad de unidades vendidas.
+     */
     public static int calcularTotalUnidadesVendidas(){
 
-        return 0;
+        int unidadtot = 0;
+        for(int i=0; i<unidades.length; i++){
+            unidadtot += unidades[i];
+        }
+
+        return unidadtot;
 
     }
-
+    /**
+     * Descripcion: Permite calcular el precio promedio de todos los productos
+     * pre: El arreglo precios debe estar inicializado
+     * @return suma Valor del precio promedio de todos los precios.
+     */
     public static double calcularPrecioPromedio(){
 
-        return 0;
+        double suma = 0;
+        for (int i = 0; i < precios.length; i++) {
+            suma += precios[i];
+        }
 
+        return suma / precios.length;
     }
-
+    /**
+     * Descripcion: Permite calcular las ventas totales
+     * pre: El arreglo unidades debe estar inicializado
+     * pre: El arreglo precios debe estar inicializado
+     * @return totalVentas Valor de todas las ventas totales
+     */
     public static double calcularVentasTotales(){
-
-        return 0;
+        double totalventas = 0;
+        for(int i= 0; i<unidades.length; i++){
+            totalventas += unidades[i]*precios[i];
+        }
+        return totalventas;
 
     }
-
+    /**
+     * Descripcion: Permite calcular el precio promedio de todos los productos
+     * pre: El arreglo precios debe estar inicializado
+     * @return contador Cantidad de productos que cumplen con el limite
+     */
     public static int consultarReferenciasSobreLimite(double limite){
-
-        return 0;
+        int contador = 0;
+        for (int i = 0; i < precios.length; i++) {
+            double totalVentasProducto = unidades[i] * precios[i];
+            if (totalVentasProducto >= limite){
+                contador++;
+            }
+        }
+        return contador;
 
     }
-
+    
 }
